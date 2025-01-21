@@ -24,6 +24,7 @@
         "cat4year/svg-reuser": "^0.0.1"
     },
     "require-dev": {
+        "enshrined/svg-sanitize": "*",
         "orchestra/testbench": "*",
         "orchid/platform": "*"
     },
