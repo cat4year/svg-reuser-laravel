@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 return [
+    //false|0|null|'' - for use default base_path on vendor:publish
+    'publish_base_path' => env('SVG_REUSER_PUBLISH_BASE_PATH', 'packages/svg-reuser-laravel'),
     'resource_sprite_path' => env('SVG_REUSER_RESOURCE_SPRITE_PATH', resource_path('sprite.svg')),
     'built_sprite_path' => env('SVG_REUSER_BUILT_SPRITE_PATH', storage_path('app/public/icons/sprite.svg')),
     'remove_prefix_after_save' => env('SVG_REUSER_REMOVE_PREFIX_AFTER_SAVE', 'icon-'),

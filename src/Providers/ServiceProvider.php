@@ -44,13 +44,16 @@ class ServiceProvider extends OrchidServiceProvider
     {
         parent::boot($dashboard);
 
-        $this->publishesMigrations([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
-        ], ['migrations', 'minimal', 'recommended', 'orchid']);
-
         $this->publishes([
             __DIR__.'/../config/svg-reuser.php' => config_path('svg-reuser.php'),
         ], ['config', 'recommended']);
+
+        $oldBasePath = base_path();
+        app()->setBasePath(config('svg-reuser.publish_base_path'));
+
+        $this->publishesMigrations([
+            __DIR__.'/../database/migrations' => database_path('migrations'),
+        ], ['migrations', 'minimal', 'recommended', 'orchid']);
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'svg-reuser');
 
@@ -118,6 +121,8 @@ class ServiceProvider extends OrchidServiceProvider
                 SpriteFromFileLoaderCommand::class,
             ]);
         }
+
+        app()->setBasePath($oldBasePath);
     }
 
     public function routes(Router $router): void
