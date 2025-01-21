@@ -25,7 +25,6 @@
 /pint export-ignore
 /pint.json export-ignore
 /resources export-ignore
-/src export-ignore
 /storage export-ignore
 /tests export-ignore
 /.phpunit.result.cache export-ignore
