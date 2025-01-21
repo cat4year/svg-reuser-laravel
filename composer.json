@@ -1,0 +1,67 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "cat4year/svg-reuser-laravel",
+    "description": "A laravel package for use tool to collect and reuse SVG as links",
+    "type": "package",
+    "keywords": [
+        "laravel",
+        "php",
+        "svg",
+        "sprite",
+        "optimize svg",
+        "optimize code",
+        "optimize html"
+    ],
+    "authors": [
+        {
+            "name": "cat4year",
+            "email": "cat4year@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "cat4year/svg-reuser": "^0.0.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "*",
+        "orchid/platform": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cat4year\\SvgReuserLaravel\\": "src/",
+            "Cat4year\\SvgReuserLaravel\\Database\\Factories\\": "src/database/factories/",
+            "Cat4year\\SvgReuserLaravel\\Database\\Seeders\\": "src/database/seeders/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:cat4year/svg-reuser.git"
+        }
+    ],
+    "scripts": {
+        "test": [
+            "vendor/bin/phpunit"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [],
+            "providers": [
+                "Cat4year\\SvgReuserLaravel\\Providers\\ServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

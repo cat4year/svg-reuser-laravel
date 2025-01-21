@@ -1,0 +1,30 @@
+services:
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: ${DOCKER_PROJECT_NAME}-nginx
+    ports:
+      - '${NGINX_PORT}:80'
+    restart: unless-stopped
+    volumes:
+      - ${APP_PATH}:/var/www/app
+      - ../docker-remote/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ../docker-remote/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ../docker-remote/nginx/upstream.conf:/etc/nginx/conf.d/upstream.conf
+      - ../docker-remote/logs/nginx:/var/log/nginx
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ../docker-remote/php
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    container_name: ${DOCKER_PROJECT_NAME}-php-fpm
+    restart: unless-stopped
+    environment:
+      COMPOSER_CACHE_DIR: /tmp/composer-cache
+    volumes:
+      - ${APP_PATH}:/var/www/app
+      - ../docker-remote/php/php.ini:/usr/local/etc/php/php.ini
+      - ../docker-remote/logs/php:/var/log/php

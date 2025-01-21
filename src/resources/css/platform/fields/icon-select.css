@@ -1,0 +1,9 @@
+.icon-select-field .ts-dropdown-content div.option svg, .icon-select-field .ts-control .item svg{
+    width: 32px;
+    height: 32px;
+    padding: 2px;
+    margin-right: 3px;
+    fill: gray;
+    display: inline-block;
+    vertical-align: middle;
+}
